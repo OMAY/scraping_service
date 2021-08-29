@@ -26,10 +26,12 @@ parsers = (
 )
 jobs, errors = [], []
 
+
 def get_settings():
     qs = User.objects.filter(send_email=True).values()
     sttings_lst = set((q['city_id'], q['language_id']) for q in qs)
     return sttings_lst
+
 
 def get_urls(_settings):
     qs = Url.objects.all().values()
@@ -49,6 +51,7 @@ async def main(value):
     job, err = await loop.run_in_executor(None, func, url, city, language)
     errors.extend(err)
     jobs.extend(job)
+
 
 settings = get_settings()
 url_list = get_urls(settings)
@@ -77,11 +80,8 @@ for job in jobs:
     except DatabaseError:
         pass
 
-
 if errors:
     er = Error(data=errors).save()
-
-
 
     # h = codecs.open('work.txt', 'w', 'utf-8')
     # h.write(str(jobs))
