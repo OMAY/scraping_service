@@ -3,9 +3,9 @@ from django.db import models
 
 from scraping.utils import from_cyrillic_to_eng
 
-def default_urls():
-    return {'work': '', 'rabota': '', 'dou': '', 'djinni': ''}
 
+def default_urls():
+    return {"work": "", "rabota": "", "dou": "", "djinni": ""}
 
 
 class City(models.Model):
@@ -76,6 +76,9 @@ class Error(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     data = jsonfield.JSONField()
     # data = models.JSONField() # for django 3.1 (without importing lib
+
+    def __str__(self):
+        return str(self.timestamp)
 
 
 class Url(models.Model):
