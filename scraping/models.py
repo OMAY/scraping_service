@@ -74,8 +74,7 @@ class Vacancy(models.Model):
 
 class Error(models.Model):
     timestamp = models.DateField(auto_now_add=True)
-    data = jsonfield.JSONField()
-    # data = models.JSONField() # for django 3.1 (without importing lib
+    data = jsonfield.JSONField()  # data = models.JSONField() # for django 3.1 (without importing lib
 
     def __str__(self):
         return str(self.timestamp)

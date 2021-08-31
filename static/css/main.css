@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Liu Jian Mao Cao;
+    src: url(../fonts/LiuJianMaoCao-Regular.ttf);
+}
+#brand {
+    font-family: Liu Jian Mao Cao;
+    color: #8AD;
+}
